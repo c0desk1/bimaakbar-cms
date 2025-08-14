@@ -1,4 +1,3 @@
-// scripts/sync-to-d1.mjs
 import fs from 'fs';
 import path from 'path';
 import { glob } from 'glob';
@@ -6,22 +5,23 @@ import matter from 'gray-matter';
 import { execSync } from 'child_process';
 import { randomBytes } from 'crypto';
 
-// Konfigurasi - sesuaikan jika perlu
+// --- Konfigurasi ---
 const postsDirectory = path.join(process.cwd(), 'content/posts');
-const dbName = 'bimaakbar-database';
+const dbName = 'bimaakbar-database'; // Pastikan nama database Anda benar
+// -----------------
 
 console.log('Memulai sinkronisasi konten ke D1...');
 
 const filenames = glob.sync(`${postsDirectory}/**/*.{md,mdx}`);
 if (filenames.length === 0) {
-  console.log('Tidak ada file .mdx yang ditemukan. Selesai.');
+  console.log('Tidak ada file .md atau .mdx yang ditemukan. Selesai.');
   process.exit(0);
 }
 
-console.log(`Menemukan ${filenames.length} file...`);
+console.log(`Menemukan ${filenames.length} file untuk diproses...`);
 
 for (const filename of filenames) {
-  const slug = path.basename(filename, '.mdx');
+  const slug = path.basename(filename, path.extname(filename));
   console.log(`- Memproses: ${slug}`);
 
   const fileContent = fs.readFileSync(filename, 'utf8');
@@ -32,19 +32,20 @@ for (const filename of filenames) {
     continue;
   }
   
-  // Siapkan data untuk dikirim sebagai parameter
+  // Siapkan data dalam sebuah array untuk dikirim sebagai parameter.
+  // Urutannya harus sesuai dengan tanda tanya (?) di SQL.
   const params = [
     slug,
     metadata.title,
-    content,
-    JSON.stringify(metadata)
+    content, // Konten mentah dengan semua baris barunya
+    JSON.stringify(metadata) // Metadata sebagai string JSON
   ];
   
-  // Tulis parameter ke file sementara agar aman dari karakter khusus
+  // Tulis parameter ke file sementara agar aman dari karakter aneh di terminal.
   const paramsFile = path.join(process.cwd(), `params-${randomBytes(4).toString('hex')}.json`);
   fs.writeFileSync(paramsFile, JSON.stringify(params));
 
-  // Perintah SQL sekarang menggunakan placeholder '?'
+  // Perintah SQL sekarang menggunakan placeholder '?' yang aman.
   const sql = `
     INSERT INTO posts (slug, title, content, metadata)
     VALUES (?, ?, ?, json(?))
@@ -55,7 +56,7 @@ for (const filename of filenames) {
   `;
 
   try {
-    // Gunakan --json-parameters untuk mengirim data secara aman
+    // Jalankan wrangler dengan --json-parameters untuk mengirim data secara aman.
     execSync(
       `npx wrangler d1 execute ${dbName} --command "${sql}" --json-parameters file://${paramsFile}`,
       { stdio: 'inherit' }
@@ -64,7 +65,7 @@ for (const filename of filenames) {
   } catch (error) {
     console.error(`  ❌ Gagal: ${slug}`, error);
   } finally {
-    // Hapus file sementara
+    // Selalu hapus file sementara setelah selesai.
     fs.unlinkSync(paramsFile);
   }
 }
