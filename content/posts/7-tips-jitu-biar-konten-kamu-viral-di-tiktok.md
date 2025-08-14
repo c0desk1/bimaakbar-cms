@@ -5,15 +5,17 @@ excerpt: TikTok bukan cuma soal joget dan lipsync—ini platform yang bisa
   ada strategi yang terukur dan kreatif. Mulai dari hook dalam 3 detik pertama,
   pemilihan musik yang sedang naik daun, hingga storytelling yang
   relatable—semua elemen punya peran penting.
-coverImage: /assets/og/open-graph.png
+coverImage: /assets/og/7-tips-jitu-biar-konten-kamu-viral-di-tiktok.webp
 date: 2025-08-15T00:03:00.000Z
 author:
   name: Bima Akbar
   picture: /assets/author/avatar.avif
 ogImage:
-  url: /assets/og/open-graph.png
+  url: /assets/og/7-tips-jitu-biar-konten-kamu-viral-di-tiktok.webp
 tags:
-  - tikok
+  - Tiktok
+  - Viral
+  - Trending
 category: Creator Hacks
 publish: true
 ---
