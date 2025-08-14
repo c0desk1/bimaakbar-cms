@@ -1,0 +1,11 @@
+name = "bimaakbar"
+main = "src/index.ts"
+compatibility_date = "2025-08-13"
+
+[observability]
+enabled = true
+
+[[d1_databases]]
+binding = "DB"
+database_name = "bimaakbar-database"
+database_id = "a10b271b-f17f-4dc8-a222-b91e5349bf63"
