@@ -9,29 +9,30 @@ type Bindings = {
 
 const app = new Hono<{ Bindings: Bindings }>()
 
+
 app.use('/api/*', cors())
 
-const parseMetadata = (items: any[]) => {
-  return items ? items.map(item => ({
-    ...item,
-    metadata: JSON.parse(item.metadata as string || '{}')
-  })) : []
-}
+const parseMetadata = (items: any[]) => items ? items.map(item => ({ ...item, metadata: JSON.parse(item.metadata as string || '{}') })) : []
 
 app.get('/api/posts', async (c) => {
-  try {
-    const { results } = await c.env.DB.prepare('SELECT * FROM posts ORDER BY createdAt DESC').all()
-    return c.json(parseMetadata(results))
-  } catch (e) {
-    return c.json({ error: 'Gagal mengambil postingan' }, 500)
-  }
+	try {
+	  const statement = c.env.DB.prepare(
+		`SELECT * FROM posts 
+		 WHERE json_extract(metadata, '$.publish') = true 
+		 ORDER BY json_extract(metadata, '$.date') DESC`
+	  );
+	  const { results } = await statement.all();
+	  return c.json(parseMetadata(results));
+	} catch (e) {
+	  return c.json({ error: 'Gagal mengambil postingan' }, 500);
+	}
 })
 
 app.get('/api/posts/:slug', async (c) => {
-  const slug = c.req.param('slug')
-  const post = await c.env.DB.prepare('SELECT * FROM posts WHERE slug = ?').bind(slug).first()
-  if (!post) return c.json({ error: 'Postingan tidak ditemukan' }, 404)
-  return c.json({ ...post, metadata: JSON.parse(post.metadata as string || '{}') })
+	const slug = c.req.param('slug');
+	const post = await c.env.DB.prepare('SELECT * FROM posts WHERE slug = ?').bind(slug).first();
+	if (!post) return c.json({ error: 'Postingan tidak ditemukan' }, 404);
+	return c.json({ ...post, metadata: JSON.parse(post.metadata as string || '{}') });
 })
 
 app.get('/api/portofolio', async (c) => {
