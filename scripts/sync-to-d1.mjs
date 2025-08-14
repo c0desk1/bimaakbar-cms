@@ -1,51 +1,26 @@
-// scripts/sync-to-d1.mjs
+// scripts/sync-to-d1.mjs (VERSI FINAL & PALING ANDAL)
 import fs from 'fs';
 import path from 'path';
 import { glob } from 'glob';
 import matter from 'gray-matter';
-import { execSync } from 'child_process';
-import { randomBytes } from 'crypto';
+import { getPlatformProxy } from 'wrangler';
 
-// --- Konfigurasi ---
 const postsDirectory = path.join(process.cwd(), 'content/posts');
 const dbName = 'bimaakbar-database';
-// -----------------
 
-console.log('Memulai sinkronisasi tabel "posts" ke D1...');
+async function main() {
+  console.log('Memulai sinkronisasi tabel "posts" ke D1...');
 
-const filenames = glob.sync(`${postsDirectory}/**/*.{md,mdx}`);
-if (filenames.length === 0) {
-  console.log('Tidak ada file .md atau .mdx yang ditemukan. Selesai.');
-  process.exit(0);
-}
+  const proxy = await getPlatformProxy();
 
-console.log(`Menemukan ${filenames.length} file untuk diproses...`);
-
-for (const filename of filenames) {
-  const slug = path.basename(filename, path.extname(filename));
-  console.log(`- Memproses: ${slug}`);
-
-  const fileContent = fs.readFileSync(filename, 'utf8');
-  const { data: metadata, content } = matter(fileContent);
-
-  if (!metadata.title) {
-    console.warn(`  ⚠️ Peringatan: Judul tidak ditemukan di ${filename}, file dilewati.`);
-    continue;
+  const filenames = glob.sync(`${postsDirectory}/**/*.{md,mdx}`);
+  if (filenames.length === 0) {
+    console.log('Tidak ada file .md atau .mdx yang ditemukan. Selesai.');
+    return;
   }
-  
-  // Siapkan data dalam sebuah array untuk dikirim sebagai parameter.
-  const params = [
-    slug,
-    metadata.title,
-    content,
-    JSON.stringify(metadata)
-  ];
-  
-  // Tulis parameter ke file sementara agar aman dari karakter khusus di terminal.
-  const paramsFile = path.join(process.cwd(), `params-${randomBytes(4).toString('hex')}.json`);
-  fs.writeFileSync(paramsFile, JSON.stringify(params));
 
-  // Perintah SQL sekarang menggunakan placeholder '?' yang aman.
+  console.log(`Menemukan ${filenames.length} file untuk diproses...`);
+
   const sql = `
     INSERT INTO posts (slug, title, content, metadata)
     VALUES (?, ?, ?, json(?))
@@ -55,19 +30,38 @@ for (const filename of filenames) {
       metadata = excluded.metadata;
   `;
 
-  try {
-    // Gunakan --json-parameters untuk mengirim data secara aman.
-    execSync(
-      `npx wrangler d1 execute ${dbName} --command "${sql}" --json-parameters file://${paramsFile}`,
-      { stdio: 'inherit' }
-    );
-    console.log(`  ✅ Sukses: ${slug}`);
-  } catch (error) {
-    console.error(`  ❌ Gagal: ${slug}`, error);
-  } finally {
-    // Selalu hapus file sementara setelah selesai.
-    fs.unlinkSync(paramsFile);
+  for (const filename of filenames) {
+    const slug = path.basename(filename, path.extname(filename));
+    
+    try {
+      console.log(`- Memproses: ${slug}`);
+      const fileContent = fs.readFileSync(filename, 'utf8');
+      const { data: metadata, content } = matter(fileContent);
+
+      if (!metadata.title) {
+        console.warn(`  ⚠️ Peringatan: Judul tidak ada di ${filename}, dilewati.`);
+        continue;
+      }
+
+      const params = [
+        slug,
+        metadata.title,
+        content,
+        JSON.stringify(metadata)
+      ];
+
+      await proxy.D1.prepare(dbName, sql).bind(...params).run();
+      console.log(`  ✅ Sukses: ${slug}`);
+
+    } catch (error) {
+      console.error(`  ❌ Gagal memproses ${slug}:`, error);
+    }
   }
 }
 
-console.log('\nSinkronisasi selesai!');
+main()
+  .then(() => console.log('\nSinkronisasi selesai!'))
+  .catch(e => {
+    console.error("Sinkronisasi gagal total:", e);
+    process.exit(1);
+  });
