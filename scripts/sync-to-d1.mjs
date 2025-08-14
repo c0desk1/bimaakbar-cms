@@ -1,13 +1,16 @@
+// scripts/sync-to-d1.mjs
 import fs from 'fs';
 import path from 'path';
 import { glob } from 'glob';
 import matter from 'gray-matter';
 import { execSync } from 'child_process';
+import { randomBytes } from 'crypto';
 
+// Konfigurasi - sesuaikan jika perlu
 const postsDirectory = path.join(process.cwd(), 'content/posts');
 const dbName = 'bimaakbar-database';
 
-console.log('Memulai sinkronisasi konten...');
+console.log('Memulai sinkronisasi konten ke D1...');
 
 const filenames = glob.sync(`${postsDirectory}/**/*.{md,mdx}`);
 if (filenames.length === 0) {
@@ -28,12 +31,23 @@ for (const filename of filenames) {
     console.warn(`  ⚠️ Peringatan: Judul tidak ditemukan di ${filename}, file dilewati.`);
     continue;
   }
+  
+  // Siapkan data untuk dikirim sebagai parameter
+  const params = [
+    slug,
+    metadata.title,
+    content,
+    JSON.stringify(metadata)
+  ];
+  
+  // Tulis parameter ke file sementara agar aman dari karakter khusus
+  const paramsFile = path.join(process.cwd(), `params-${randomBytes(4).toString('hex')}.json`);
+  fs.writeFileSync(paramsFile, JSON.stringify(params));
 
-  const metadataJsonString = JSON.stringify(metadata).replace(/'/g, "''");
-
+  // Perintah SQL sekarang menggunakan placeholder '?'
   const sql = `
     INSERT INTO posts (slug, title, content, metadata)
-    VALUES ('${slug}', '${metadata.title.replace(/'/g, "''")}', '${content.replace(/'/g, "''")}', json('${metadataJsonString}'))
+    VALUES (?, ?, ?, json(?))
     ON CONFLICT(slug) DO UPDATE SET
       title = excluded.title,
       content = excluded.content,
@@ -41,12 +55,18 @@ for (const filename of filenames) {
   `;
 
   try {
-    execSync(`npx wrangler d1 execute ${dbName} --command "${sql}"`, { stdio: 'inherit' });
+    // Gunakan --json-parameters untuk mengirim data secara aman
+    execSync(
+      `npx wrangler d1 execute ${dbName} --command "${sql}" --json-parameters file://${paramsFile}`,
+      { stdio: 'inherit' }
+    );
     console.log(`  ✅ Sukses: ${slug}`);
   } catch (error) {
     console.error(`  ❌ Gagal: ${slug}`, error);
+  } finally {
+    // Hapus file sementara
+    fs.unlinkSync(paramsFile);
   }
 }
 
 console.log('\nSinkronisasi selesai!');
-
