@@ -35,7 +35,7 @@
 	 */
 	"vars": {
 	    "NEXT_PUBLIC_API_URL": "https://bimaakbar.bimasaktiakbarr.workers.dev"
-	}
+	},
 	/**
 	 * Note: Use secrets to store sensitive data.
 	 * https://developers.cloudflare.com/workers/configuration/secrets/
