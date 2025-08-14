@@ -30,7 +30,7 @@ const CONTENT_TYPES = [
 
 const { CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_ID, CLOUDFLARE_D1_DB_UUID } = process.env;
 
-const ASSET_BASE_URL = 'https://bimaakbar-cms.vercel.app';
+const ASSET_BASE_URL = 'https://bimaakbar.bimasaktiakbarr.workers.dev';
 
 if (!CLOUDFLARE_API_TOKEN || !CLOUDFLARE_ACCOUNT_ID || !CLOUDFLARE_D1_DB_UUID) {
   console.error('Satu atau lebih environment variable Cloudflare tidak ditemukan.');
