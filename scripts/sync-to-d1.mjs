@@ -9,7 +9,7 @@ const dbName = 'bimaakbar-database';
 
 console.log('Memulai sinkronisasi konten...');
 
-const filenames = glob.sync(`${postsDirectory}/**/*.mdx`);
+const filenames = glob.sync(`${postsDirectory}/**/*.{md,mdx}`);
 if (filenames.length === 0) {
   console.log('Tidak ada file .mdx yang ditemukan. Selesai.');
   process.exit(0);
@@ -49,3 +49,4 @@ for (const filename of filenames) {
 }
 
 console.log('\nSinkronisasi selesai!');
+
