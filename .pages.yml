@@ -61,7 +61,7 @@ content:
     label: Kontak
     type: collection
     path: content/contacts
-    filename: '{primary}.json'
+    filename: '{primary}.md'
     view:
       fields: [ name, email, message, createdAt ]
     fields:
