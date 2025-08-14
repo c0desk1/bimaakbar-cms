@@ -8,7 +8,7 @@ excerpt: FL Studio Mobile terus menjadi pilihan utama para musisi dan produser
   optimal, baik melalui Google Play Store maupun APK resmi. Mulai produksi musik
   kapan saja dan di mana saja dengan langkah-langkah praktis ini!
 coverImage: /assets/og/cara-install-fl-studio-mobile-di-android-terbaru-2025.webp
-date: 2025-08-10T00:56:00.000Z
+date: 2025-08-14T00:56:00.000Z
 author:
   name: Bima Akbar
   picture: /assets/author/avatar.avif
