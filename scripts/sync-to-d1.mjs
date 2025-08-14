@@ -23,7 +23,7 @@ const CONTENT_TYPES = [
     name: 'portofolio',
     directory: 'content/portofolio',
     sql: `INSERT INTO portofolio (title, date, excerpt, videoId) VALUES (?, ?, ?, ?)
-          ON CONFLICT(id) DO UPDATE SET title=excluded.title, date=excluded.date, excerpt=excluded.excerpt, videoId=excluded.videoId;`,
+          ON CONFLICT(videoId) DO UPDATE SET title=excluded.title, date=excluded.date, excerpt=excluded.excerpt;`,
     mapParams: (slug, metadata, content) => [metadata.title, metadata.date, metadata.excerpt, metadata.videoId],
   }
 ];
