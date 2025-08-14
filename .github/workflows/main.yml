@@ -6,6 +6,8 @@ on:
       - main
     paths:
       - 'content/posts/**'
+      - 'content/pages/**'
+      - 'content/portofolio/**'
 
 jobs:
   sync-to-d1:
