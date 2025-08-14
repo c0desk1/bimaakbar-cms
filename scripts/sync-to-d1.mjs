@@ -5,69 +5,90 @@ import matter from 'gray-matter';
 import { execSync } from 'child_process';
 import { randomBytes } from 'crypto';
 
-// --- Konfigurasi ---
-const postsDirectory = path.join(process.cwd(), 'content/posts');
-const dbName = 'bimaakbar-database'; // Pastikan nama database Anda benar
-// -----------------
+// --- PUSAT KONFIGURASI ---
+// Tambahkan atau ubah tipe konten di sini
+const CONTENT_TYPES = [
+  {
+    name: 'posts',
+    directory: 'content/posts',
+    sql: `INSERT INTO posts (slug, title, content, metadata) VALUES (?, ?, ?, json(?))
+          ON CONFLICT(slug) DO UPDATE SET title=excluded.title, content=excluded.content, metadata=excluded.metadata;`,
+  },
+  {
+    name: 'portofolio',
+    directory: 'content/portofolio',
+    sql: `INSERT INTO portofolio (title, date, excerpt, videoId) VALUES (?, ?, ?, ?)
+          ON CONFLICT(title) DO UPDATE SET date=excluded.date, excerpt=excluded.excerpt, videoId=excluded.videoId;`,
+  },
+  {
+    name: 'pages',
+    directory: 'content/pages',
+    sql: `INSERT INTO pages (slug, title, excerpt, coverImage, content) VALUES (?, ?, ?, ?, ?)
+          ON CONFLICT(slug) DO UPDATE SET title=excluded.title, excerpt=excluded.excerpt, coverImage=exlude.coverImage, content=excluded.content;`,
+  },
+];
 
-console.log('Memulai sinkronisasi konten ke D1...');
+const dbName = 'bimaakbar-database';
 
-const filenames = glob.sync(`${postsDirectory}/**/*.{md,mdx}`);
-if (filenames.length === 0) {
-  console.log('Tidak ada file .md atau .mdx yang ditemukan. Selesai.');
-  process.exit(0);
-}
-
-console.log(`Menemukan ${filenames.length} file untuk diproses...`);
-
-for (const filename of filenames) {
-  const slug = path.basename(filename, path.extname(filename));
-  console.log(`- Memproses: ${slug}`);
-
-  const fileContent = fs.readFileSync(filename, 'utf8');
-  const { data: metadata, content } = matter(fileContent);
-
-  if (!metadata.title) {
-    console.warn(`  ⚠️ Peringatan: Judul tidak ditemukan di ${filename}, file dilewati.`);
-    continue;
+async function syncContentType(config) {
+  console.log(`\n--- Memulai sinkronisasi untuk tipe: ${config.name} ---`);
+  
+  const contentDirectory = path.join(process.cwd(), config.directory);
+  if (!fs.existsSync(contentDirectory)) {
+    console.log(`Direktori ${config.directory} tidak ditemukan, melewati.`);
+    return;
   }
   
-  // Siapkan data dalam sebuah array untuk dikirim sebagai parameter.
-  // Urutannya harus sesuai dengan tanda tanya (?) di SQL.
-  const params = [
-    slug,
-    metadata.title,
-    content, // Konten mentah dengan semua baris barunya
-    JSON.stringify(metadata) // Metadata sebagai string JSON
-  ];
+  const filenames = glob.sync(`${contentDirectory}/**/*.{md,mdx}`);
+  if (filenames.length === 0) {
+    console.log('Tidak ada file yang ditemukan. Selesai.');
+    return;
+  }
   
-  // Tulis parameter ke file sementara agar aman dari karakter aneh di terminal.
-  const paramsFile = path.join(process.cwd(), `params-${randomBytes(4).toString('hex')}.json`);
-  fs.writeFileSync(paramsFile, JSON.stringify(params));
+  console.log(`Menemukan ${filenames.length} file...`);
 
-  // Perintah SQL sekarang menggunakan placeholder '?' yang aman.
-  const sql = `
-    INSERT INTO posts (slug, title, content, metadata)
-    VALUES (?, ?, ?, json(?))
-    ON CONFLICT(slug) DO UPDATE SET
-      title = excluded.title,
-      content = excluded.content,
-      metadata = excluded.metadata;
-  `;
+  for (const filename of filenames) {
+    const slug = path.basename(filename, path.extname(filename));
+    console.log(`- Memproses: ${slug}`);
 
-  try {
-    // Jalankan wrangler dengan --json-parameters untuk mengirim data secara aman.
-    execSync(
-      `npx wrangler d1 execute ${dbName} --command "${sql}" --json-parameters file://${paramsFile}`,
-      { stdio: 'inherit' }
-    );
-    console.log(`  ✅ Sukses: ${slug}`);
-  } catch (error) {
-    console.error(`  ❌ Gagal: ${slug}`, error);
-  } finally {
-    // Selalu hapus file sementara setelah selesai.
-    fs.unlinkSync(paramsFile);
+    const fileContent = fs.readFileSync(filename, 'utf8');
+    const { data: metadata, content } = matter(fileContent);
+
+    if (!metadata.title) {
+      console.warn(`  ⚠️ Peringatan: Judul tidak ditemukan di ${filename}, file dilewati.`);
+      continue;
+    }
+    
+    let params;
+    // Siapkan parameter berdasarkan tipe konten
+    if (config.name === 'posts') {
+      params = [slug, metadata.title, content, JSON.stringify(metadata)];
+    } else if (config.name === 'portofolio') {
+      params = [metadata.title, metadata.date, metadata.excerpt, metadata.videoId];
+    } else if (config.name === 'pages') {
+      params = [slug, metadata.title, content];
+    }
+
+    const paramsFile = path.join(process.cwd(), `params-${randomBytes(4).toString('hex')}.json`);
+    fs.writeFileSync(paramsFile, JSON.stringify(params));
+
+    try {
+      execSync(
+        `npx wrangler d1 execute ${dbName} --command "${config.sql}" --json-parameters file://${paramsFile}`,
+        { stdio: 'inherit' }
+      );
+      console.log(`  ✅ Sukses: ${slug || metadata.title}`);
+    } catch (error) {
+      console.error(`  ❌ Gagal: ${slug || metadata.title}`, error);
+    } finally {
+      fs.unlinkSync(paramsFile);
+    }
   }
 }
 
-console.log('\nSinkronisasi selesai!');
+(async () => {
+  for (const config of CONTENT_TYPES) {
+    await syncContentType(config);
+  }
+  console.log('\nSemua sinkronisasi selesai!');
+})();
