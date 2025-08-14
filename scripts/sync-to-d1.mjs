@@ -25,7 +25,7 @@ const CONTENT_TYPES = [
     sql: `INSERT INTO portofolio (title, date, excerpt, videoId) VALUES (?, ?, ?, ?)
           ON CONFLICT(videoId) DO UPDATE SET title=excluded.title, date=excluded.date, excerpt=excluded.excerpt;`,
     mapParams: (slug, metadata, content) => [metadata.title, metadata.date, metadata.excerpt, metadata.videoId],
-  }
+  },
 ];
 
 const { CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_ID, CLOUDFLARE_D1_DB_UUID } = process.env;
