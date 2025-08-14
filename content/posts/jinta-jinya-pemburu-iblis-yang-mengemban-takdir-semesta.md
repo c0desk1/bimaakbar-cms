@@ -5,7 +5,7 @@ excerpt: Jinta, atau yang kelak dikenal sebagai Jinya, adalah pemburu iblis
   Kadono, takdir membawanya melintasi zaman—meninggalkan cinta, saudara, dan
   masa lalu demi mengemban pedang yang menjadi beban sekaligus harapan.
 coverImage: /assets/og/jinta-jinya-kijin-gentoushou.webp
-date: 2025-08-12T13:45:00.000Z
+date: 2025-08-14T22:45:00.000Z
 author:
   name: Bima Akbar
   picture: /assets/author/avatar.avif
