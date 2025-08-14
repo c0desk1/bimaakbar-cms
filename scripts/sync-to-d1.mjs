@@ -12,12 +12,12 @@ const CONTENT_TYPES = [
           ON CONFLICT(slug) DO UPDATE SET title=excluded.title, content=excluded.content, metadata=excluded.metadata;`,
     mapParams: (slug, metadata, content) => [slug, metadata.title, content, JSON.stringify(metadata)],
   },
-  {
+ {
     name: 'pages',
     directory: 'content/pages',
-    sql: `INSERT INTO pages (slug, title, content) VALUES (?, ?, ?)
-          ON CONFLICT(slug) DO UPDATE SET title=excluded.title, content=excluded.content;`,
-    mapParams: (slug, metadata, content) => [slug, metadata.title, content],
+    sql: `INSERT INTO pages (slug, title, content, excerpt, coverImage) VALUES (?, ?, ?, ?, ?)
+          ON CONFLICT(slug) DO UPDATE SET title=excluded.title, content=excluded.content, excerpt=excluded.excerpt, coverImage=excluded.coverImage;`,
+    mapParams: (slug, metadata, content) => [slug, metadata.title, content, metadata.excerpt, metadata.coverImage],
   },
   {
     name: 'portofolio',
