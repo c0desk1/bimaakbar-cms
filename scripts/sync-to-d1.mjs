@@ -30,12 +30,21 @@ const CONTENT_TYPES = [
 
 const { CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_ID, CLOUDFLARE_D1_DB_UUID } = process.env;
 
+const ASSET_BASE_URL = 'https://bimaakbar-cms.vercel.app';
+
 if (!CLOUDFLARE_API_TOKEN || !CLOUDFLARE_ACCOUNT_ID || !CLOUDFLARE_D1_DB_UUID) {
   console.error('Satu atau lebih environment variable Cloudflare tidak ditemukan.');
   process.exit(1);
 }
 
 const D1_API_URL = `https://api.cloudflare.com/client/v4/accounts/${CLOUDFLARE_ACCOUNT_ID}/d1/database/${CLOUDFLARE_D1_DB_UUID}/query`;
+
+function toFullUrl(path) {
+  if (!path || path.startsWith('http')) {
+    return path;
+  }
+  return `${ASSET_BASE_URL}${path.startsWith('/') ? '' : '/'}${path}`;
+}
 
 async function syncContentType(config) {
   console.log(`\n--- Memulai sinkronisasi untuk tipe: ${config.name} ---`);
@@ -65,6 +74,16 @@ async function syncContentType(config) {
       if (!metadata.title) {
         console.warn(`  ⚠️ Peringatan: Judul tidak ada di ${filename}, dilewati.`);
         continue;
+      }
+
+      if (metadata.coverImage) {
+        metadata.coverImage = toFullUrl(metadata.coverImage);
+      }
+      if (metadata.ogImage && metadata.ogImage.url) {
+        metadata.ogImage.url = toFullUrl(metadata.ogImage.url);
+      }
+      if (metadata.author && metadata.author.picture) {
+        metadata.author.picture = toFullUrl(metadata.author.picture);
       }
       
       const params = config.mapParams(slug, metadata, content);
