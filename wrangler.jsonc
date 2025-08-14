@@ -20,6 +20,12 @@
 		"SMTP_PORT": "465",
 		"SMTP_USER": "bimasaktiakbarr@gmail.com",
 		"SMTP_PASS": "pvsw xwxw ddsi qzke",
-
 	},
+	"d1_databases": [
+		{
+		"binding": "DB",
+		"database_name": "bimaakbar-database",
+		"database_id": "a10b271b-f17f-4dc8-a222-b91e5349bf63"
+		},
+  	],
 }
