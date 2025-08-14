@@ -5,7 +5,7 @@ excerpt: Ingin membuat musik sendiri tapi bingung mulai dari mana? Panduan ini
   Studio 2025, di komputermu. Ikuti langkah-langkah sederhana kami dan mulailah
   berkreasi hari ini!
 coverImage: /assets/og/cara-install-fl-studio-pc.webp
-date: 2025-08-14T23:14:00.000Z
+date: 2025-08-11T23:14:00.000Z
 author:
   name: Bima Akbar
   picture: /assets/author/avatar.avif
