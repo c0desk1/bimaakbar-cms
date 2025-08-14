@@ -35,6 +35,24 @@ app.get('/api/posts/:slug', async (c) => {
 	return c.json({ ...post, metadata: JSON.parse(post.metadata as string || '{}') });
 })
 
+app.post('/api/posts', async (c) => {
+  const providedApiKey = c.req.header('x-api-key');
+  if (providedApiKey !== c.env.API_KEY) {
+    return c.json({ error: 'Akses ditolak' }, 401);
+  }
+
+  try {
+    const { title, slug, content, metadata } = await c.req.json();
+    await c.env.DB.prepare(
+      'INSERT INTO posts (slug, title, content, metadata) VALUES (?, ?, ?, json(?))'
+    ).bind(slug, title, content, JSON.stringify(metadata)).run();
+    
+    return c.json({ message: 'Postingan berhasil dibuat' }, 201);
+  } catch (e: any) {
+    return c.json({ error: 'Gagal membuat postingan', message: e.message }, 500);
+  }
+});
+
 app.get('/api/portofolio', async (c) => {
   try {
     const { results } = await c.env.DB.prepare('SELECT * FROM portofolio ORDER BY date DESC').all()
@@ -52,6 +70,13 @@ app.get('/api/pages', async (c) => {
     return c.json({ error: 'Gagal mengambil halaman' }, 500)
   }
 })
+
+app.get('/api/pages/:slug', async (c) => {
+  const slug = c.req.param('slug');
+  const page = await c.env.DB.prepare('SELECT * FROM pages WHERE slug = ?').bind(slug).first();
+  if (!page) return c.json({ error: 'Halaman tidak ditemukan' }, 404);
+  return c.json(page);
+});
 
 app.post('/api/contact', async (c) => {
   try {
