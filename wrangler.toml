@@ -8,4 +8,9 @@ enabled = true
 [[d1_databases]]
 binding = "DB"
 database_name = "bimaakbar-database"
+
+[[kv_namespaces]]
+id = "e74515fc24d846cf88104f166ea4e33f"
+binding = "BIMAAKBAR_KV"
+
 database_id = "a10b271b-f17f-4dc8-a222-b91e5349bf63"
