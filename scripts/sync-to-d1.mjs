@@ -1,4 +1,3 @@
-// scripts/sync-to-d1.mjs
 import fs from 'fs';
 import path from 'path';
 import { glob } from 'glob';
@@ -8,7 +7,7 @@ import { execSync } from 'child_process';
 const postsDirectory = path.join(process.cwd(), 'content/posts');
 const dbName = 'bimaakbar-database';
 
-console.log('Memulai sinkronisasi konten ke D1...');
+console.log('Memulai sinkronisasi konten...');
 
 const filenames = glob.sync(`${postsDirectory}/**/*.mdx`);
 if (filenames.length === 0) {
@@ -16,21 +15,25 @@ if (filenames.length === 0) {
   process.exit(0);
 }
 
-console.log(`Menemukan ${filenames.length} file untuk diproses...`);
+console.log(`Menemukan ${filenames.length} file...`);
 
 for (const filename of filenames) {
-  console.log(`- Memproses ${filename}`);
+  const slug = path.basename(filename, '.mdx');
+  console.log(`- Memproses: ${slug}`);
 
   const fileContent = fs.readFileSync(filename, 'utf8');
   const { data: metadata, content } = matter(fileContent);
 
-  const title = metadata.title;
-  const slug = path.basename(filename, '.mdx');
-  const metadataJsonString = JSON.stringify(metadata);
+  if (!metadata.title) {
+    console.warn(`  ⚠️ Peringatan: Judul tidak ditemukan di ${filename}, file dilewati.`);
+    continue;
+  }
+
+  const metadataJsonString = JSON.stringify(metadata).replace(/'/g, "''");
 
   const sql = `
     INSERT INTO posts (slug, title, content, metadata)
-    VALUES ('${slug}', '${title.replace(/'/g, "''")}', '${content.replace(/'/g, "''")}', json('${metadataJsonString.replace(/'/g, "''")}'))
+    VALUES ('${slug}', '${metadata.title.replace(/'/g, "''")}', '${content.replace(/'/g, "''")}', json('${metadataJsonString}'))
     ON CONFLICT(slug) DO UPDATE SET
       title = excluded.title,
       content = excluded.content,
@@ -38,11 +41,10 @@ for (const filename of filenames) {
   `;
 
   try {
-
     execSync(`npx wrangler d1 execute ${dbName} --command "${sql}"`, { stdio: 'inherit' });
-    console.log(`  ✅ Sukses menyinkronkan slug: ${slug}`);
+    console.log(`  ✅ Sukses: ${slug}`);
   } catch (error) {
-    console.error(`  ❌ Gagal menyinkronkan slug: ${slug}`, error);
+    console.error(`  ❌ Gagal: ${slug}`, error);
   }
 }
 
