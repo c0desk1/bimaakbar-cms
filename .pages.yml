@@ -1,0 +1,71 @@
+media:
+  input: public/assets
+  output: /assets
+  categories: [ "image" ]
+content:
+  - name: posts
+    label: Postingan
+    type: collection
+    path: content/posts
+    filename: '{primary}.md'
+    view:
+      fields: [ coverImage, title, date, publish ]
+    fields:
+      - { name: title, label: Judul, type: string, required: true }
+      - { name: excerpt, label: Deskripsi, type: string }
+      - { name: coverImage, label: Cover, type: image } 
+      - { name: date, label: Tanggal, type: date, options: { time: true, format: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'" } }
+      - name: author
+        label: Author
+        type: object
+        fields:
+          - { name: name, label: Name, type: string }
+          - { name: picture, label: Avatar, type: image }
+      - name: ogImage
+        label: Image (social sharing)
+        type: object
+        fields:
+          - { name: url, label: URL, type: image }
+      - { name: tags, label: Tags, type: string, list: true }
+      - { name: category, label: Category, type: string }
+      - { name: publish, label: Publish, type: boolean }
+      - { name: body, label: Body, type: rich-text }
+      
+  - name: portfolio
+    label: Portfolio
+    type: collection
+    path: content/portofolio
+    filename: '{primary}.mdx'
+    view:
+      fields: [ title, date, excerpt ]
+    fields:
+      - { name: title, label: Judul, type: string, required: true }
+      - { name: excerpt, label: Deskripsi, type: text, required: true }
+      - { name: videoId, label: ID, type: string, required: true}
+      - { name: date, label: Tanggal, type: date, required: true }
+        
+  - name: pages
+    label: Halaman
+    type: collection
+    path: content/pages
+    filename: '{primary}.mdx'
+    view:
+      fields: [ coverImage, title, ]
+    fields:
+          - { name: title, label: Judul, type: string }
+          - { name: excerpt, label: Deskripsi, type: string }
+          - { name: coverImage, label: Cover, type: image } 
+          - { name: body, label: Body, type: rich-text }
+
+  - name: contact
+    label: Kontak
+    type: collection
+    path: content/contacts
+    filename: '{primary}.json'
+    view:
+      fields: [ name, email, message, createdAt ]
+    fields:
+          - { name: name, label: Name, type: string,  required: true }
+          - { name: email, label: Email, type: string,  required: true }
+          - { name: message, label: Pesan, type: string,  required: true }
+          - { name: createdAt, label: Tanggal, type: date,  required: true }
