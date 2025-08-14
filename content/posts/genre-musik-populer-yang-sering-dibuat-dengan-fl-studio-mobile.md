@@ -4,13 +4,13 @@ excerpt: FL Studio Mobile bukan cuma alat produksi musik di genggaman—ia jadi
   senjata kreatif bagi produser genre EDM, lo-fi, trap, hingga synthwave.
   Temukan genre-genre populer yang sering dibuat di FL Studio Mobile dan
   bagaimana kamu bisa mulai berkarya langsung dari smartphone.
-coverImage: https://mbclghyk2qmst4uo.public.blob.vercel-storage.com/OG/genre-musik-populer-yang-sering-dibuat-dengan-fl-studio-mobile.webp
-date: 2025-08-12T20:13:00.000Z
+coverImage: /assets/og/ableton-live-vs-fl-studio-daw-populer-update-2025.webp
+date: 2025-08-14T21:02:00.000Z
 author:
   name: Bima Akbar
   picture: /assets/author/avatar.avif
 ogImage:
-  url: https://mbclghyk2qmst4uo.public.blob.vercel-storage.com/OG/genre-musik-populer-yang-sering-dibuat-dengan-fl-studio-mobile.webp
+  url: /assets/og/ableton-live-vs-fl-studio-daw-populer-update-2025.webp
 tags:
   - flstudio
   - flstudiomobile
