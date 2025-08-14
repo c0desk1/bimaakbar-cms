@@ -11,6 +11,8 @@ author:
   picture: /assets/author/avatar.avif
 ogImage:
   url: /assets/og/open-graph.png
+tags:
+  - tikok
 category: Creator Hacks
 publish: true
 ---
