@@ -7,9 +7,10 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: '**',
-      }
+      },
     ],
     formats: ['image/webp', 'image/avif'],
+  },
 };
 
 export default nextConfig;
