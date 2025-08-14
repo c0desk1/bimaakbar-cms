@@ -5,14 +5,17 @@ excerpt: '"Ingin konten Reels kamu menjangkau ribuan bahkan jutaan penonton?
   menggoda hingga waktu posting yang presisi, artikel ini membongkar rahasia
   viral yang digunakan kreator profesional untuk memaksimalkan reach dan
   engagement—tanpa harus ikut-ikutan tren secara buta.'
+coverImage: /assets/og/tips-trik-viral-di-reels-facebook-proo.webp
 date: 2025-08-15T02:40:00.000Z
 author:
   name: Bima Akbar
   picture: /assets/author/avatar.avif
+ogImage:
+  url: /assets/og/tips-trik-viral-di-reels-facebook-proo.webp
 tags:
-  - fbpro
-  - facebook
-  - reels
+  - FBPro
+  - Facebook
+  - Reels
 category: Creator Hacks
 publish: true
 ---
