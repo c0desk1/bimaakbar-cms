@@ -6,8 +6,6 @@ on:
       - main
     paths:
       - 'content/posts/**'
-      - 'content/portofolio/**'
-      - 'content/pages/**'
 
 jobs:
   sync-to-d1:
@@ -22,7 +20,7 @@ jobs:
           node-version: '20'
 
       - name: Install Dependencies
-        run: npm install glob gray-matter
+        run: npm install
 
       - name: Run Sync Script
         run: node ./scripts/sync-to-d1.mjs
