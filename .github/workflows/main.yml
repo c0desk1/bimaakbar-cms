@@ -22,6 +22,9 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
+      - name: Install node-fetch
+        run: npm install node-fetch@3
+
       - name: Run Sync Script
         run: node ./scripts/sync-to-d1.mjs
         env:
