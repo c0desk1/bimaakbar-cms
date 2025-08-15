@@ -4,6 +4,7 @@
 	"private": true,
 	"scripts": {
 		"deploy": "wrangler deploy",
+		"build": "tsc --build",
 		"dev": "wrangler dev",
 		"start": "wrangler dev",
 		"test": "vitest",
@@ -13,7 +14,7 @@
 		"@cloudflare/vitest-pool-workers": "^0.8.19",
 		"typescript": "^5.5.2",
 		"vitest": "~3.2.0",
-		"wrangler": "^4.29.1"
+		"wrangler": "^4.30.0"
 	},
 	"dependencies": {
 		"glob": "^11.0.3",
