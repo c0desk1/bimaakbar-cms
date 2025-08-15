@@ -4,7 +4,7 @@ excerpt: Temukan 5 plugin reverb gratis terbaik untuk FL Studio. Tambahkan
   kedalaman dan karakter unik ke musikmu tanpa biaya. Cocok untuk mixing,
   ambient, hingga sound design. Semua plugin legal, ringan, dan mudah digunakan.
 coverImage: /assets/og/5-plugin-compressor-fl-studio-gratis.webp
-date: 2025-08-07T12:30:00.000Z
+date: 2025-08-08T12:30:00.000Z
 author:
   name: Bima Akbar
   picture: /assets/author/avatar.avif
