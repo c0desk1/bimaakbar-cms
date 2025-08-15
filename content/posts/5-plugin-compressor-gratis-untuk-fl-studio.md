@@ -1,8 +1,8 @@
 ---
 title: 5 Plugin Compressor Gratis untuk FL Studio
-excerpt: Temukan 5 plugin reverb gratis terbaik untuk FL Studio. Tambahkan
-  kedalaman dan karakter unik ke musikmu tanpa biaya. Cocok untuk mixing,
-  ambient, hingga sound design. Semua plugin legal, ringan, dan mudah digunakan.
+excerpt: Cari plugin compressor gratis untuk FL Studio? Coba OTT, Kotelnikov,
+  DC1A, CompShaper, dan MJUC Jr.—dari punchy multi-band hingga kompresi vintage
+  yang hangat. Semua bisa bikin mixing kamu makin konsisten dan profesional! 🎧
 coverImage: /assets/og/5-plugin-compressor-fl-studio-gratis.webp
 date: 2025-08-08T12:30:00.000Z
 author:
