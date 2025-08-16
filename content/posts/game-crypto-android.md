@@ -26,10 +26,9 @@ Sejak kebijakan Google Play memperjelas aturan integrasi aset blockchain/NFT (tr
 
 * * *
 
-## 1) **Axie Infinity: Origins / Classic** (Ronin, Android via Mavis Hub)
+## **Axie Infinity: Origins / Classic** (Ronin, Android via Mavis Hub)
 
 **Model cuan:** Hadiah dalam
-
 **SLP/AXS**; aset (Axies, rune, charm) diperdagangkan di ekosistem Ronin.  
 **Bukti bisa cair:** Sky Mavis menyediakan **fitur withdraw AXS/SLP** dari dalam game Axie Classic; instalasi Android tersedia via **Mavis Hub** (Play Store/APK) dan butuh **Ronin Wallet**.
 
@@ -46,7 +45,7 @@ Sejak kebijakan Google Play memperjelas aturan integrasi aset blockchain/NFT (tr
 
 * * *
 
-## 2) **Splinterlands** (Hive, Mobile Web/Android Browser + App Companion)
+## **Splinterlands** (Hive, Mobile Web/Android Browser + App Companion)
 
 **Model cuan:** Hadiah **SPS** (token) + **DEC** (mata uang game) serta jual-beli kartu NFT.  
 **Bukti bisa cair:** Dukungan resmi **transfer in/out** DEC/SPS antara **in-game ↔ Hive Engine/ETH/BSC**, dan panduan cash out SPS/DEC via Hive-Engine/DEX. Rilis catatan 2025 menunjukkan game aktif & dikelola.
