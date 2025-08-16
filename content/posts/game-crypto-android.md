@@ -30,7 +30,7 @@ Berkat aturan baru dari Google Play, sekarang semakin banyak game resmi di Andro
 
 Berikut adalah beberapa game yang terbukti bisa menghasilkan uang:
 
-### 1\. Axie Infinity (Origins / Classic)
+### Axie Infinity (Origins / Classic)
 
 *   **Cara Dapat Uang:** Kamu bisa mendapatkan token bernama SLP/AXS dari bermain game. Selain itu, karakter (Axies), _rune_, dan _charm_ bisa diperjualbelikan.
     
@@ -49,7 +49,7 @@ Berikut adalah beberapa game yang terbukti bisa menghasilkan uang:
 *   **Catatan:** Penghasilan sangat tidak menentu karena harga tokennya naik-turun.
     
 
-### 2\. Splinterlands (Mirip Kartu Yu-Gi-Oh!)
+### Splinterlands (Mirip Kartu Yu-Gi-Oh!)
 
 *   **Cara Dapat Uang:** Kamu mendapatkan hadiah token (SPS dan DEC) dan bisa menjual kartu-kartu NFT langka yang kamu punya.
     
@@ -64,7 +64,7 @@ Berikut adalah beberapa game yang terbukti bisa menghasilkan uang:
 *   **Catatan:** Semakin jago strategimu dan semakin bagus koleksi kartumu, semakin besar potensi penghasilanmu. Kamu juga bisa menyewakan kartumu ke pemain lain.
     
 
-### 3\. Sorare (Game Manajer Sepak Bola/Basket/Baseball)
+### Sorare (Game Manajer Sepak Bola/Basket/Baseball)
 
 *   **Cara Dapat Uang:** Ini adalah game fantasi olahraga. Kamu menyusun tim menggunakan kartu pemain (NFT). Jika timmu berprestasi, kamu bisa dapat hadiah berupa uang (ETH) atau kartu langka yang bisa dijual.
     
@@ -81,7 +81,7 @@ Berikut adalah beberapa game yang terbukti bisa menghasilkan uang:
 *   **Catatan:** Penghasilan sangat bergantung pada pengetahuanmu tentang pemain dan kapan waktu yang tepat untuk menjual kartu.
     
 
-### 4\. NFL Rivals & FIFA Rivals (Game Olahraga Koleksi)
+### NFL Rivals & FIFA Rivals (Game Olahraga Koleksi)
 
 *   **Cara Dapat Uang:** Kumpulkan item atau kartu langka dalam game, lalu jual di **Mythical Marketplace**.
     
