@@ -1,8 +1,26 @@
+// sync-and-trigger.mjs
 import { glob } from 'glob';
 import path from 'path';
 import fs from 'fs';
 import matter from 'gray-matter';
 import fetch from 'node-fetch';
+
+const ASSET_BASE_URL = 'https://bimaakbar.bimasaktiakbarr.workers.dev';
+
+const {
+  CLOUDFLARE_API_TOKEN,
+  CLOUDFLARE_ACCOUNT_ID,
+  CLOUDFLARE_D1_DB_UUID,
+  TELEGRAM_BOT_TOKEN,
+  ADMIN_CHAT_ID
+} = process.env;
+
+if (!CLOUDFLARE_API_TOKEN || !CLOUDFLARE_ACCOUNT_ID || !CLOUDFLARE_D1_DB_UUID || !TELEGRAM_BOT_TOKEN || !ADMIN_CHAT_ID) {
+  console.error('Environment variable Cloudflare atau Telegram tidak ditemukan.');
+  process.exit(1);
+}
+
+const D1_API_URL = `https://api.cloudflare.com/client/v4/accounts/${CLOUDFLARE_ACCOUNT_ID}/d1/database/${CLOUDFLARE_D1_DB_UUID}/query`;
 
 const CONTENT_TYPES = [
   {
@@ -12,7 +30,7 @@ const CONTENT_TYPES = [
           ON CONFLICT(slug) DO UPDATE SET title=excluded.title, content=excluded.content, metadata=excluded.metadata;`,
     mapParams: (slug, metadata, content) => [slug, metadata.title, content, JSON.stringify(metadata)],
   },
- {
+  {
     name: 'pages',
     directory: 'content/pages',
     sql: `INSERT INTO pages (slug, title, content, excerpt, coverImage) VALUES (?, ?, ?, ?, ?)
@@ -28,67 +46,35 @@ const CONTENT_TYPES = [
   },
 ];
 
-const { CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_ID, CLOUDFLARE_D1_DB_UUID } = process.env;
-
-const ASSET_BASE_URL = 'https://bimaakbar.bimasaktiakbarr.workers.dev';
-
-if (!CLOUDFLARE_API_TOKEN || !CLOUDFLARE_ACCOUNT_ID || !CLOUDFLARE_D1_DB_UUID) {
-  console.error('Satu atau lebih environment variable Cloudflare tidak ditemukan.');
-  process.exit(1);
-}
-
-const D1_API_URL = `https://api.cloudflare.com/client/v4/accounts/${CLOUDFLARE_ACCOUNT_ID}/d1/database/${CLOUDFLARE_D1_DB_UUID}/query`;
-
-function toFullUrl(path) {
-  if (!path || path.startsWith('http')) {
-    return path;
-  }
-  return `${ASSET_BASE_URL}${path.startsWith('/') ? '' : '/'}${path}`;
+function toFullUrl(filePath) {
+  if (!filePath || filePath.startsWith('http')) return filePath;
+  return `${ASSET_BASE_URL}${filePath.startsWith('/') ? '' : '/'}${filePath}`;
 }
 
 async function syncContentType(config) {
-  console.log(`\n--- Memulai sinkronisasi untuk tipe: ${config.name} ---`);
-  
-  const contentDirectory = path.join(process.cwd(), config.directory);
-  if (!fs.existsSync(contentDirectory)) {
-    console.log(`Direktori ${config.directory} tidak ditemukan, melewati.`);
-    return;
-  }
+  console.log(`\n--- Sinkronisasi: ${config.name} ---`);
 
-  const filenames = glob.sync(`${contentDirectory}/**/*.{md,mdx}`);
-  if (filenames.length === 0) {
-    console.log('Tidak ada file yang ditemukan.');
-    return;
-  }
-  
-  console.log(`Menemukan ${filenames.length} file...`);
+  const contentDir = path.join(process.cwd(), config.directory);
+  if (!fs.existsSync(contentDir)) return console.log(`Direktori ${config.directory} tidak ditemukan.`);
+
+  const filenames = glob.sync(`${contentDir}/**/*.{md,mdx}`);
+  if (filenames.length === 0) return console.log('Tidak ada file ditemukan.');
 
   for (const filename of filenames) {
     const slug = path.basename(filename, path.extname(filename));
-    
     try {
-      console.log(`- Memproses: ${slug}`);
       const fileContent = fs.readFileSync(filename, 'utf8');
       const { data: metadata, content } = matter(fileContent);
 
-      if (!metadata.title) {
-        console.warn(`  ⚠️ Peringatan: Judul tidak ada di ${filename}, dilewati.`);
-        continue;
-      }
+      if (!metadata.title) continue;
 
-      if (metadata.coverImage) {
-        metadata.coverImage = toFullUrl(metadata.coverImage);
-      }
-      if (metadata.ogImage && metadata.ogImage.url) {
-        metadata.ogImage.url = toFullUrl(metadata.ogImage.url);
-      }
-      if (metadata.author && metadata.author.picture) {
-        metadata.author.picture = toFullUrl(metadata.author.picture);
-      }
-      
+      if (metadata.coverImage) metadata.coverImage = toFullUrl(metadata.coverImage);
+      if (metadata.ogImage?.url) metadata.ogImage.url = toFullUrl(metadata.ogImage.url);
+      if (metadata.author?.picture) metadata.author.picture = toFullUrl(metadata.author.picture);
+
       const params = config.mapParams(slug, metadata, content);
-      
-      const response = await fetch(D1_API_URL, {
+
+      const res = await fetch(D1_API_URL, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${CLOUDFLARE_API_TOKEN}`,
@@ -97,21 +83,43 @@ async function syncContentType(config) {
         body: JSON.stringify({ sql: config.sql, params })
       });
 
-      const result = await response.json();
-      if (!result.success) {
-        console.error(`  ❌ Gagal untuk "${slug}":`, result.errors || result);
-      } else {
-        console.log(`  ✅ Sukses untuk "${slug}"`);
-      }
-    } catch (error) {
-      console.error(`  ❌ Error saat memproses "${slug}":`, error);
+      const result = await res.json();
+      if (!result.success) console.error(`❌ Gagal: ${slug}`, result.errors || result);
+      else console.log(`✅ Sukses: ${slug}`);
+    } catch (err) {
+      console.error(`❌ Error: ${slug}`, err);
     }
   }
 }
 
-(async () => {
-  for (const config of CONTENT_TYPES) {
-    await syncContentType(config);
+// --- Kirim notifikasi ke subscriber Telegram ---
+async function notifySubscribers() {
+  try {
+    const subsRes = await fetch(`https://bimaakbar.bimasaktiakbarr.workers.dev/subscribers`);
+    const subscribers = await subsRes.json();
+    if (!Array.isArray(subscribers) || subscribers.length === 0) return;
+
+    for (const sub of subscribers) {
+      if (!sub.telegram_id) continue;
+      await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: sub.telegram_id,
+          text: `Hai ${sub.name}, ada konten baru yang mungkin menarik untukmu! 🎉\nCek blog: https://bimaakbar.my.id/blog`
+        })
+      });
+    }
+    console.log('📩 Semua subscriber telah diberitahu.');
+  } catch (err) {
+    console.error('❌ Gagal mengirim notifikasi ke subscriber:', err);
   }
-  console.log('\nSemua sinkronisasi selesai!');
-})();
+}
+
+// --- Jalankan sinkronisasi & trigger ---
+for (const config of CONTENT_TYPES) {
+  await syncContentType(config);
+}
+await notifySubscribers();
+
+console.log('\nSemua proses selesai!');
