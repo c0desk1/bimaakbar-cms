@@ -14,6 +14,9 @@ app.use('/api/*', cors())
 const parseMetadata = (items: any[]) =>
   items ? items.map((item: any) => ({ ...item, metadata: JSON.parse(item.metadata as string || '{}') })) : []
 
+const BLOCKED_IPS = ["140.213.64.174"];
+const RATE_LIMIT_MS = 10_000;
+
 // ==================== BLOG API ====================
 
 // Get all posts
@@ -158,41 +161,45 @@ app.post('/api/comments', async (c) => {
 })
 
 // ==================== VIEW COUNTER API ====================
-
-// Tambah view (dengan blokir IP kamu sendiri)
 app.post('/api/views/:postId', async (c) => {
   try {
-    const postId = c.req.param('postId')
-    const ip = c.req.header('cf-connecting-ip') || 'unknown'
+    const postId = c.req.param('postId');
+    const ip = c.req.header('cf-connecting-ip') || 'unknown';
 
-    const blockedIP = "140.213.64.174"
-
-    if (ip === blockedIP) {
-      const current = await c.env.BIMAAKBAR_KV.get(postId)
-      const count = current ? parseInt(current) : 0
-      return c.json({ postId, views: count, added: false, blocked: true })
+    if (BLOCKED_IPS.includes(ip)) {
+      const current = await c.env.BIMAAKBAR_KV.get(postId);
+      return c.json({ postId, views: current ? parseInt(current) : 0, added: false, blocked: true });
     }
 
-    const current = await c.env.BIMAAKBAR_KV.get(postId)
-    const count = current ? parseInt(current) + 1 : 1
-    await c.env.BIMAAKBAR_KV.put(postId, count.toString())
+    const rateKey = `rl:${postId}:${ip}`;
+    const last = await c.env.BIMAAKBAR_KV.get(rateKey);
+    const now = Date.now();
+    if (last && now - parseInt(last) < RATE_LIMIT_MS) {
+      const current = await c.env.BIMAAKBAR_KV.get(postId);
+      return c.json({ postId, views: current ? parseInt(current) : 0, added: false, rateLimited: true });
+    }
 
-    return c.json({ postId, views: count, added: true })
+    const current = await c.env.BIMAAKBAR_KV.get(postId);
+    const count = current ? parseInt(current) + 1 : 1;
+    await c.env.BIMAAKBAR_KV.put(postId, count.toString());
+    await c.env.BIMAAKBAR_KV.put(rateKey, now.toString(), { expirationTtl: RATE_LIMIT_MS / 1000 });
+
+    return c.json({ postId, views: count, added: true });
   } catch (e: any) {
-    return c.json({ error: 'Gagal menambah view', message: e.message }, 500)
+    return c.json({ error: 'Gagal menambah view', message: e.message }, 500);
   }
-})
+});
 
-// Ambil jumlah view
 app.get('/api/views/:postId', async (c) => {
   try {
-    const postId = c.req.param('postId')
-    const current = await c.env.BIMAAKBAR_KV.get(postId)
-    const count = current ? parseInt(current) : 0
-    return c.json({ postId, views: count })
+    const postId = c.req.param('postId');
+    const current = await c.env.BIMAAKBAR_KV.get(postId);
+    const count = current ? parseInt(current) : 0;
+    return c.json({ postId, views: count });
   } catch (e: any) {
-    return c.json({ error: 'Gagal mengambil view', message: e.message }, 500)
+    return c.json({ error: 'Gagal mengambil view', message: e.message }, 500);
   }
-})
+});
 
 export default app
+
