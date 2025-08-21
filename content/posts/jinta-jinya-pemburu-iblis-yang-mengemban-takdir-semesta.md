@@ -1,5 +1,5 @@
 ---
-title: Jinta / Jinya — Pemburu Iblis yang Mengemban Takdir Semesta
+title: Jinta Pemburu Iblis yang Mengemban Takdir Semesta
 excerpt: Jinta, atau yang kelak dikenal sebagai Jinya, adalah pemburu iblis
   abadi yang lahir dari tragedi. Dari seorang pelindung desa di pegunungan
   Kadono, takdir membawanya melintasi zaman—meninggalkan cinta, saudara, dan
