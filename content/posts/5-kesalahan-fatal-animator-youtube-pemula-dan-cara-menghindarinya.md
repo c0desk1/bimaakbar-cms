@@ -1,5 +1,5 @@
 ---
-title: 5 Kesalahan Fatal Animator YouTube Pemula (dan Cara Menghindarinya)
+title: 5 Kesalahan Fatal Animator YouTube Pemula
 excerpt: Hindari 5 kesalahan fatal yang menghambat pertumbuhan channel animasi
   kalian. Sebuah panduan praktis untuk animator pemula agar mendapat lebih
   banyak penonton setia dan views yang meningkat.
