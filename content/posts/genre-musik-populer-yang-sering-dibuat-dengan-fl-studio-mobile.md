@@ -1,5 +1,5 @@
 ---
-title: Genre Musik Populer yang Sering Dibuat dengan FL Studio Mobile
+title: Genre Musik yang Sering Dibuat dengan FL Studio Mobile
 excerpt: FL Studio Mobile bukan cuma alat produksi musik di genggaman—ia jadi
   senjata kreatif bagi produser genre EDM, lo-fi, trap, hingga synthwave.
   Temukan genre-genre populer yang sering dibuat di FL Studio Mobile dan
