@@ -1,5 +1,5 @@
 ---
-title: 5 Niche YouTube yang Diprediksi Trending di Agustus 2025
+title: 5 Niche YouTube yang Diprediksi Trending
 excerpt: Lima niche YouTube yang diprediksi viral di Agustus 2025—dari konten AI
   faceless hingga gaming naratif. Cocok untuk kreator yang ingin scale up.
 coverImage: /assets/og/cover-youtube-trending-august-2025.webp
