@@ -160,68 +160,43 @@ app.post('/api/comments', async (c) => {
   }
 })
 
-// ==================== VIEW COUNTER API ====================
-app.post('/api/views/:postId', async (c) => {
+// ==================== VIEW COUNTER API (NEW) ====================
+
+app.post("/api/views/:postId", async (c) => {
   try {
-    const postId = c.req.param('postId')
-    const ip = c.req.header('cf-connecting-ip') || 'unknown'
+    const postId = c.req.param("postId")
 
-    if (BLOCKED_IPS.includes(ip)) {
-      const current = await c.env.BIMAAKBAR_KV.get(postId)
-      const count = current ? parseInt(current) : 0
-      return c.json({ postId, views: count, added: false, blocked: true })
-    }
-    
-    const lastKey = `last_view:${postId}:${ip}`
-    const lastViewRaw = await c.env.BIMAAKBAR_KV.get(lastKey)
-    const now = Date.now()
-
-    if (lastViewRaw) {
-      const lastView = parseInt(lastViewRaw)
-      if (now - lastView < RATE_LIMIT_MS) {
-        const current = await c.env.BIMAAKBAR_KV.get(postId)
-        const count = current ? parseInt(current) : 0
-        return c.json({
-          postId,
-          views: count,
-          added: false,
-          blocked: false,
-          rateLimited: true,
-        })
-      }
-    }
-
-    await c.env.BIMAAKBAR_KV.put(lastKey, now.toString(), {
-      expirationTtl: RATE_LIMIT_MS / 1000,
-    })
-
+    // Ambil jumlah view saat ini
     const current = await c.env.BIMAAKBAR_KV.get(postId)
-    const count = current ? parseInt(current) + 1 : 1
+    const count = current ? parseInt(current, 10) + 1 : 1
+
+    // Simpan kembali ke KV
     await c.env.BIMAAKBAR_KV.put(postId, count.toString())
 
     return c.json({ postId, views: count, added: true })
   } catch (e: unknown) {
-    console.error("View API Error (POST):", e)
+    console.error("ViewCounter Error (POST):", e)
     const message =
       e instanceof Error ? e.message : JSON.stringify(e) || "Unknown error"
     return c.json({ error: "Gagal menambah view", message }, 500)
   }
 })
 
-app.get('/api/views/:postId', async (c) => {
+app.get("/api/views/:postId", async (c) => {
   try {
-    const postId = c.req.param('postId')
+    const postId = c.req.param("postId")
+
     const current = await c.env.BIMAAKBAR_KV.get(postId)
-    const count = current ? parseInt(current) : 0
+    const count = current ? parseInt(current, 10) : 0
+
     return c.json({ postId, views: count })
   } catch (e: unknown) {
-    console.error("View API Error (GET):", e)
+    console.error("ViewCounter Error (GET):", e)
     const message =
       e instanceof Error ? e.message : JSON.stringify(e) || "Unknown error"
     return c.json({ error: "Gagal mengambil view", message }, 500)
   }
 })
-
 
 export default app
 
