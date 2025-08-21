@@ -1,4 +1,4 @@
-// sync-and-trigger.mjs
+// sync-to-d1.mjs
 import { glob } from 'glob';
 import path from 'path';
 import fs from 'fs';
@@ -15,8 +15,14 @@ const {
   ADMIN_CHAT_ID
 } = process.env;
 
+// cek environment variable
 if (!CLOUDFLARE_API_TOKEN || !CLOUDFLARE_ACCOUNT_ID || !CLOUDFLARE_D1_DB_UUID || !TELEGRAM_BOT_TOKEN || !ADMIN_CHAT_ID) {
   console.error('Environment variable Cloudflare atau Telegram tidak ditemukan.');
+  console.log('CLOUDFLARE_API_TOKEN:', !!CLOUDFLARE_API_TOKEN);
+  console.log('CLOUDFLARE_ACCOUNT_ID:', !!CLOUDFLARE_ACCOUNT_ID);
+  console.log('CLOUDFLARE_D1_DB_UUID:', !!CLOUDFLARE_D1_DB_UUID);
+  console.log('TELEGRAM_BOT_TOKEN:', !!TELEGRAM_BOT_TOKEN);
+  console.log('ADMIN_CHAT_ID:', !!ADMIN_CHAT_ID);
   process.exit(1);
 }
 
@@ -92,23 +98,35 @@ async function syncContentType(config) {
   }
 }
 
-// --- Kirim notifikasi ke subscriber Telegram ---
 async function notifySubscribers() {
   try {
-    const subsRes = await fetch(`https://bimaakbar.bimasaktiakbarr.workers.dev/subscribers`);
-    const subscribers = await subsRes.json();
+    const subsRes = await fetch(`${ASSET_BASE_URL}/subscribers`);
+    const text = await subsRes.text();
+
+    let subscribers;
+    try {
+      subscribers = JSON.parse(text);
+    } catch (err) {
+      console.error('❌ Response subscriber bukan JSON valid:', text);
+      return;
+    }
+
     if (!Array.isArray(subscribers) || subscribers.length === 0) return;
 
     for (const sub of subscribers) {
       if (!sub.telegram_id) continue;
-      await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          chat_id: sub.telegram_id,
-          text: `Hai ${sub.name}, ada konten baru yang mungkin menarik untukmu! 🎉\nCek blog: https://bimaakbar.my.id/blog`
-        })
-      });
+      try {
+        await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            chat_id: sub.telegram_id,
+            text: `Hai ${sub.name}, ada konten baru yang mungkin menarik untukmu! 🎉\nCek blog: https://bimaakbar.my.id/blog`
+          })
+        });
+      } catch (err) {
+        console.error(`❌ Gagal kirim ke ${sub.telegram_id}:`, err);
+      }
     }
     console.log('📩 Semua subscriber telah diberitahu.');
   } catch (err) {
@@ -116,10 +134,10 @@ async function notifySubscribers() {
   }
 }
 
-// --- Jalankan sinkronisasi & trigger ---
-for (const config of CONTENT_TYPES) {
-  await syncContentType(config);
-}
-await notifySubscribers();
-
-console.log('\nSemua proses selesai!');
+(async () => {
+  for (const config of CONTENT_TYPES) {
+    await syncContentType(config);
+  }
+  await notifySubscribers();
+  console.log('\nSemua proses selesai!');
+})();
