@@ -1,5 +1,5 @@
 ---
-title: "Cara Install FL Studio 2025 di PC: Panduan Lengkap untuk Pemula"
+title: Cara Install FL Studio 2025 di PC
 excerpt: Ingin membuat musik sendiri tapi bingung mulai dari mana? Panduan ini
   akan menunjukkan cara mudah menginstal software produksi musik populer, FL
   Studio 2025, di komputermu. Ikuti langkah-langkah sederhana kami dan mulailah
