@@ -1,5 +1,5 @@
 ---
-title: Game Crypto Android yang Real Menghasilkan Cuan (Update Agustus 2025)
+title: Game Crypto Android yang Real Menghasilkan Cuan
 excerpt: Daftar game crypto di Android yang benar-benar bisa menghasilkan uang,
   dengan bukti withdraw dan panduan praktis.
 coverImage: /assets/og/game-crypto-android.webp
