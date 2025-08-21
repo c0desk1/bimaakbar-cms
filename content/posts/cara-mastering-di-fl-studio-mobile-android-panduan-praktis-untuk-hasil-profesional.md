@@ -1,6 +1,5 @@
 ---
-title: "Cara Mastering di FL Studio Mobile Android: Panduan Praktis untuk Hasil
-  Profesional"
+title: Cara Mastering di FL Studio Mobile Android
 excerpt: Mastering bukan hanya soal menaikkan volume—ini tentang menyempurnakan
   karakter audio agar siap bersaing di platform digital. Meski hanya bermodal
   Android dan FL Studio Mobile, kamu tetap bisa menghasilkan kualitas
