@@ -165,9 +165,8 @@ app.post('/api/views/:postId', async (c) => {
   try {
     const postId = c.req.param('postId')
     const ip = c.req.header('cf-connecting-ip') || 'unknown'
-    const blockedIP = "140.213.64.174"
 
-    if (ip === blockedIP) {
+    if (BLOCKED_IPS.includes(ip)) {
       const current = await c.env.BIMAAKBAR_KV.get(postId)
       const count = current ? parseInt(current) : 0
       return c.json({ postId, views: count, added: false, blocked: true })
@@ -179,14 +178,16 @@ app.post('/api/views/:postId', async (c) => {
 
     if (lastViewRaw) {
       const lastView = parseInt(lastViewRaw)
-      if (now - lastView < VIEW_LIMIT_MS) {
+      if (now - lastView < RATE_LIMIT_MS) {
         const current = await c.env.BIMAAKBAR_KV.get(postId)
         const count = current ? parseInt(current) : 0
         return c.json({ postId, views: count, added: false, blocked: false, rateLimited: true })
       }
     }
 
-    await c.env.BIMAAKBAR_KV.put(lastKey, now.toString(), { expirationTtl: VIEW_LIMIT_MS / 1000 })
+    await c.env.BIMAAKBAR_KV.put(lastKey, now.toString(), {
+      expirationTtl: RATE_LIMIT_MS / 1000,
+    })
 
     const current = await c.env.BIMAAKBAR_KV.get(postId)
     const count = current ? parseInt(current) + 1 : 1
@@ -194,6 +195,7 @@ app.post('/api/views/:postId', async (c) => {
 
     return c.json({ postId, views: count, added: true })
   } catch (e: any) {
+    console.error("View API Error:", e)
     return c.json({ error: 'Gagal menambah view', message: e.message }, 500)
   }
 })
@@ -205,10 +207,12 @@ app.get('/api/views/:postId', async (c) => {
     const count = current ? parseInt(current) : 0
     return c.json({ postId, views: count })
   } catch (e: any) {
+    console.error("View API Error:", e)
     return c.json({ error: 'Gagal mengambil view', message: e.message }, 500)
   }
 })
 
 export default app
+
 
 
