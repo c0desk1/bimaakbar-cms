@@ -1,5 +1,5 @@
 ---
-title: "Tips & Trik Viral di Facebook Reels Pro: Maksimalkan Reach, Minimalkan Noise"
+title: Tips & Trik Viral di Facebook Reels
 excerpt: Ingin konten Reels kamu menjangkau ribuan bahkan jutaan penonton?
   Facebook Reels bukan soal keberuntungan, tapi strategi. Dari hook yang
   menggoda hingga waktu posting yang presisi, artikel ini membongkar rahasia
