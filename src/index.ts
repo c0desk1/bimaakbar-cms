@@ -171,7 +171,7 @@ app.post('/api/views/:postId', async (c) => {
       const count = current ? parseInt(current) : 0
       return c.json({ postId, views: count, added: false, blocked: true })
     }
-
+    
     const lastKey = `last_view:${postId}:${ip}`
     const lastViewRaw = await c.env.BIMAAKBAR_KV.get(lastKey)
     const now = Date.now()
@@ -181,7 +181,13 @@ app.post('/api/views/:postId', async (c) => {
       if (now - lastView < RATE_LIMIT_MS) {
         const current = await c.env.BIMAAKBAR_KV.get(postId)
         const count = current ? parseInt(current) : 0
-        return c.json({ postId, views: count, added: false, blocked: false, rateLimited: true })
+        return c.json({
+          postId,
+          views: count,
+          added: false,
+          blocked: false,
+          rateLimited: true,
+        })
       }
     }
 
@@ -194,9 +200,11 @@ app.post('/api/views/:postId', async (c) => {
     await c.env.BIMAAKBAR_KV.put(postId, count.toString())
 
     return c.json({ postId, views: count, added: true })
-  } catch (e: any) {
-    console.error("View API Error:", e)
-    return c.json({ error: 'Gagal menambah view', message: e.message }, 500)
+  } catch (e: unknown) {
+    console.error("View API Error (POST):", e)
+    const message =
+      e instanceof Error ? e.message : JSON.stringify(e) || "Unknown error"
+    return c.json({ error: "Gagal menambah view", message }, 500)
   }
 })
 
@@ -206,13 +214,17 @@ app.get('/api/views/:postId', async (c) => {
     const current = await c.env.BIMAAKBAR_KV.get(postId)
     const count = current ? parseInt(current) : 0
     return c.json({ postId, views: count })
-  } catch (e: any) {
-    console.error("View API Error:", e)
-    return c.json({ error: 'Gagal mengambil view', message: e.message }, 500)
+  } catch (e: unknown) {
+    console.error("View API Error (GET):", e)
+    const message =
+      e instanceof Error ? e.message : JSON.stringify(e) || "Unknown error"
+    return c.json({ error: "Gagal mengambil view", message }, 500)
   }
 })
 
+
 export default app
+
 
 
 
