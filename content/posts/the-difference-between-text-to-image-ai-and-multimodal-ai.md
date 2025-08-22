@@ -6,7 +6,7 @@ excerpt: Text-to-Image AI and multimodal AI like Google Gemini may sound
   across text, images, and more. This article explores their key differences,
   real-world use cases, and why both are shaping the future of AI in 2025.
 coverImage: /assets/og/ai.webp
-date: 2025-08-22T03:07:00.000Z
+date: 2025-08-22T06:00:00.000Z
 author:
   name: Bima Akbar
   picture: /assets/author/avatar.avif
@@ -14,14 +14,15 @@ ogImage:
   url: /assets/og/ai.webp
 tags:
   - Gemini ai
+  - Meta ai
   - ChatGPT ai
   - Copilot ai
+  - Claude ai
   - Mid Journey
   - Leonardo
   - Vheer
   - Stable Diffusion
-  - DELL-E
-  - Claude ai
+  - DALL-E
 category: Tech
 publish: true
 ---
@@ -75,11 +76,12 @@ Models that can understand and generate across multiple formats: text, images, a
 
 ### Text-to-Image
 
-May produce biased or distorted results.
-
-Quality heavily depends on prompt detail.
-
-Copyright concerns due to training data sources.
+*   May produce biased or distorted results.
+    
+*   Quality heavily depends on prompt detail.
+    
+*   Copyright concerns due to training data sources.
+    
 
 ### Multimodal AI
 
@@ -112,7 +114,7 @@ Copyright concerns due to training data sources.
 
 ## AI Trends in 2025
 
-Text-to-Image → Increasingly integrated into creative platforms like Adobe Stock, Canva, and Shutterstock AI.
+Text-to-Image → Increasingly integrated into creative platforms like Adobe Stock, Canva, and ~Shutterstock AI.~
 
 Multimodal AI → Becoming core features in productivity ecosystems such as Google Workspace (Gemini) and Microsoft Copilot.
 
