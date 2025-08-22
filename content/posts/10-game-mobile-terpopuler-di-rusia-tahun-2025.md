@@ -4,7 +4,7 @@ excerpt: Temukan 10 game mobile paling populer di Rusia tahun 2025, dari puzzle
   adiktif hingga battle royale kompetitif. Lihat apa yang bikin gamer Rusia
   ketagihan dan tren yang sedang naik daun!
 coverImage: /assets/og/10-trending-mobile-game-in-russia.webp
-date: 2025-08-22T21:11:00.000Z
+date: 2025-08-22T22:11:00.000Z
 author:
   name: Bima Akbar
   picture: /assets/author/avatar.avif
@@ -28,7 +28,7 @@ Rusia dikenal sebagai salah satu negara dengan komunitas gamer yang aktif dan kr
 
 Kalau kamu ingin tahu game mobile apa saja yang sedang hits di smartphone para gamer Rusia, berikut daftarnya lengkap dengan alasan mengapa mereka begitu populer.
 
-<hr />
+* * *
 
 ## Roblox
 
@@ -36,7 +36,7 @@ Kalau kamu ingin tahu game mobile apa saja yang sedang hits di smartphone para g
 
 Tidak mengherankan jika Roblox masih memimpin daftar ini. Game ini lebih dari sekadar bermain; ia memberikan kebebasan bagi pemain untuk menciptakan dunia mereka sendiri. Baik anak-anak maupun remaja Rusia menggunakan Roblox untuk bermain game buatan teman, atau bahkan membuat game sendiri. Platform ini berhasil menggabungkan kreativitas, interaksi sosial, dan keseruan gameplay dalam satu paket.
 
-<hr />
+* * *
 
 ## Block Blast!
 
@@ -44,7 +44,7 @@ Tidak mengherankan jika Roblox masih memimpin daftar ini. Game ini lebih dari se
 
 Block Blast! adalah game puzzle match-3 yang tampak sederhana, namun berhasil membuat pemain ketagihan. Kombinasi warna cerah, efek visual memikat, dan level-level yang menantang membuat pemain ingin terus mencoba hingga menyelesaikan semua misi. Game seperti ini populer karena bisa dimainkan sambil menunggu, di transportasi umum, atau saat istirahat singkat, cocok untuk gaya hidup mobile gamer modern.
 
-<hr />
+* * *
 
 ## Ded Moroz Horror 2025
 
@@ -52,7 +52,7 @@ Block Blast! adalah game puzzle match-3 yang tampak sederhana, namun berhasil me
 
 Game horor lokal ini menawarkan pengalaman yang berbeda dari game horor internasional. Ded Moroz Horror 2025 memadukan elemen horor klasik dengan budaya Rusia, seperti tokoh Ded Moroz (Santa versi Rusia) dan setting musim dingin yang mencekam. Para pemain tertarik bukan hanya karena rasa takut yang ditawarkan, tetapi juga keunikan cerita dan nuansa lokal yang tidak bisa ditemukan di game lain.
 
-<hr />
+* * *
 
 ## FPS Strike Ops: Modern Arena
 
@@ -60,7 +60,7 @@ Game horor lokal ini menawarkan pengalaman yang berbeda dari game horor internas
 
 Bagi penggemar FPS, game ini adalah surga. Strike Ops: Modern Arena menawarkan tembak-menembak cepat, peta yang variatif, dan grafis yang memukau. Komunitas Rusia suka bermain kompetitif, jadi mode multiplayer menjadi daya tarik utama. Selain itu, game ini relatif ringan untuk mobile, sehingga bisa dimainkan di berbagai perangkat.
 
-<hr />
+* * *
 
 ## Brawl Stars
 
@@ -68,7 +68,7 @@ Bagi penggemar FPS, game ini adalah surga. Strike Ops: Modern Arena menawarkan t
 
 Brawl Stars tetap populer karena gameplaynya yang cepat, mudah dipelajari, namun sulit dikuasai. Game ini memungkinkan pemain Rusia untuk bertarung dalam pertandingan singkat, yang ideal untuk sesi bermain cepat. Grafis kartun yang ceria dan karakter yang lucu juga membuat game ini menarik bagi semua usia.
 
-<hr />
+* * *
 
 ## Clash Royale
 
@@ -76,7 +76,7 @@ Brawl Stars tetap populer karena gameplaynya yang cepat, mudah dipelajari, namun
 
 Bagi mereka yang suka strategi, Clash Royale tetap jadi favorit. Pemain harus berpikir cepat untuk menyusun strategi menyerang dan bertahan. Setiap pertarungan menawarkan ketegangan tersendiri, dan komunitasnya yang aktif di Rusia membuat game ini terus diperbarui dan relevan.
 
-<hr />
+* * *
 
 ## PUBG Mobile
 
@@ -84,7 +84,7 @@ Bagi mereka yang suka strategi, Clash Royale tetap jadi favorit. Pemain harus be
 
 Meskipun sudah beberapa tahun rilis, PUBG Mobile tetap populer di Rusia. Alasan utamanya adalah grafis realistis, mode battle royale yang seru, dan gameplay kompetitif yang membuat pemain ingin selalu kembali. Turnamen lokal dan komunitas aktif membuat game ini tetap menjadi pilihan utama bagi gamer mobile.
 
-<hr />
+* * *
 
 ## Genshin Impact
 
@@ -92,7 +92,7 @@ Meskipun sudah beberapa tahun rilis, PUBG Mobile tetap populer di Rusia. Alasan 
 
 Game ini menawarkan dunia fantasi yang luas, karakter yang unik, dan cerita yang imersif. Di Rusia, gamer yang menyukai RPG dan eksplorasi dunia terbuka sangat menyukai Genshin Impact. Game ini juga rutin merilis update dan event, sehingga pemain terus merasa tertantang untuk menjelajahi dunia Teyvat.
 
-<hr />
+* * *
 
 ## Subway Surfers
 
@@ -100,16 +100,15 @@ Game ini menawarkan dunia fantasi yang luas, karakter yang unik, dan cerita yang
 
 Subway Surfers mungkin terdengar klasik, tapi tetap eksis karena kesederhanaan dan keseruan gameplay. Game ini cocok untuk semua umur dan bisa dimainkan kapan saja. Popularitasnya di Rusia tetap stabil karena para pemain menyukai permainan cepat yang tidak membutuhkan komitmen waktu panjang.
 
-<hr />
+* * *
 
 ## Мир домовят: три в ряд
 
-![Мир домовят](https://bimaakbar.bimasaktiakbarr.workers
-dev/assets/images/mир-домовят-три-в-ряд.webp)
+!\[Мир домовят\]([https://bimaakbar.bimasaktiakbarr.workers](https://bimaakbar.bimasaktiakbarr.workers) dev/assets/images/mир-домовят-три-в-ряд.webp)
 
 Game match-3 lokal ini menarik perhatian karena menawarkan karakter dan tema yang dekat dengan budaya Rusia. Pemain merasa lebih terhubung dengan cerita dan visualnya, sehingga game ini berhasil memikat banyak pengguna. Gameplaynya adiktif, sehingga banyak yang kembali memainkan setiap hari.
 
-<hr />
+* * *
 
 ## Penutup
 
