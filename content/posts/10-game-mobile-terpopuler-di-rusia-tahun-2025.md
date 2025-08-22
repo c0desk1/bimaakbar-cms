@@ -104,7 +104,7 @@ Subway Surfers mungkin terdengar klasik, tapi tetap eksis karena kesederhanaan d
 
 ## Мир домовят: три в ряд
 
-![Мир домовят: три в ряд](https://bimaakbar.bimasaktiakbarr.workers
+![Мир домовят](https://bimaakbar.bimasaktiakbarr.workers
 dev/assets/images/mир-домовят-три-в-ряд.webp)
 
 Game match-3 lokal ini menarik perhatian karena menawarkan karakter dan tema yang dekat dengan budaya Rusia. Pemain merasa lebih terhubung dengan cerita dan visualnya, sehingga game ini berhasil memikat banyak pengguna. Gameplaynya adiktif, sehingga banyak yang kembali memainkan setiap hari.
