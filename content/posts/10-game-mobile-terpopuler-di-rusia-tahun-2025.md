@@ -56,7 +56,7 @@ Game horor lokal ini menawarkan pengalaman yang berbeda dari game horor internas
 
 ## FPS Strike Ops: Modern Arena
 
-![FPS Strike Modern Arena Illustration](https://bimaakbar.bimasaktiakbarr.workers.dev/assets/images/fps_strike_modern_arena.webp)
+![FPS Strike Modern Arena Illustration](https://bimaakbar.bimasaktiakbarr.workers.dev/assets/images/fps-strike-modern-arena.webp)
 
 Bagi penggemar FPS, game ini adalah surga. Strike Ops: Modern Arena menawarkan tembak-menembak cepat, peta yang variatif, dan grafis yang memukau. Komunitas Rusia suka bermain kompetitif, jadi mode multiplayer menjadi daya tarik utama. Selain itu, game ini relatif ringan untuk mobile, sehingga bisa dimainkan di berbagai perangkat.
 
@@ -105,8 +105,7 @@ Subway Surfers mungkin terdengar klasik, tapi tetap eksis karena kesederhanaan d
 ## Мир домовят: три в ряд
 
 ![Мир домовят: три в ряд](https://bimaakbar.bimasaktiakbarr.workers
-dev/assets/images/mир-домовят-три 
--в-ряд.webp)
+dev/assets/images/mир-домовят-три-в-ряд.webp)
 
 Game match-3 lokal ini menarik perhatian karena menawarkan karakter dan tema yang dekat dengan budaya Rusia. Pemain merasa lebih terhubung dengan cerita dan visualnya, sehingga game ini berhasil memikat banyak pengguna. Gameplaynya adiktif, sehingga banyak yang kembali memainkan setiap hari.
 
