@@ -28,6 +28,8 @@ Rusia dikenal sebagai salah satu negara dengan komunitas gamer yang aktif dan kr
 
 Kalau kamu ingin tahu game mobile apa saja yang sedang hits di smartphone para gamer Rusia, berikut daftarnya lengkap dengan alasan mengapa mereka begitu populer.
 
+<hr />
+
 ## Roblox
 
 ![Roblox illustration](/assets/images/1000137825.webp)
