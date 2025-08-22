@@ -5,22 +5,23 @@ excerpt: Text-to-Image AI and multimodal AI like Google Gemini may sound
   turn prompts into stunning visuals, multimodal AI can understand and analyze
   across text, images, and more. This article explores their key differences,
   real-world use cases, and why both are shaping the future of AI in 2025.
-coverImage: /assets/og/open-graph.webp
+coverImage: /assets/og/ai.webp
 date: 2025-08-22T03:07:00.000Z
 author:
   name: Bima Akbar
   picture: /assets/author/avatar.avif
 ogImage:
-  url: /assets/og/open-graph.webp
+  url: /assets/og/ai.webp
 tags:
-  - Gemini AI
-  - ChatGPT AI
-  - Copilot AI
+  - Gemini ai
+  - ChatGPT ai
+  - Copilot ai
   - Mid Journey
   - Leonardo
   - Vheer
   - Stable Diffusion
-  - DELL E
+  - DELL-E
+  - Claude ai
 category: Tech
 publish: true
 ---
