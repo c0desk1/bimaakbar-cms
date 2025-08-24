@@ -7,7 +7,7 @@ coverImage: /assets/og/9-modern-ai-image-generators.webp
 date: 2025-08-24T14:20:00.000Z
 author:
   name: Bima Akbar
-  picture: /assets/og/open-graph.webp
+  picture: /assets/author/avatar.avif
 ogImage:
   url: /assets/og/9-modern-ai-image-generators.webp
 tags:
