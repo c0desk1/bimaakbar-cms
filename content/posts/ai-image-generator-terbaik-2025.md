@@ -19,7 +19,7 @@ tags:
   - Artbreeder
   - Dream by Wombo
 category: Tech
-publish: true
+publish: false
 ---
 _Visual bukan lagi pelengkap, ia adalah bahasa utama di era digital. Dari kampanye iklan hingga konten sosial media, gambar menentukan impresi pertama. Tapi di tengah tuntutan kecepatan dan kreativitas, muncul satu solusi revolusioner: AI Image Generator._
 
@@ -27,7 +27,7 @@ Kini, cukup dengan teks, kamu bisa menghasilkan visual berkualitas tinggi—tanp
 
 Tahun 2025 menghadirkan berbagai pilihan AI Image Generator, masing-masing dengan gaya, kekuatan teknis, dan ekosistem yang berbeda. Artikel ini akan membahas 7 tool terbaik yang bisa kamu gunakan untuk menghasilkan gambar yang tidak hanya indah, tapi juga siap pakai secara komersial.
 
-<hr/>
+* * *
 
 ## DALL·E 3 (OpenAI)
 
@@ -52,7 +52,7 @@ Tahun 2025 menghadirkan berbagai pilihan AI Image Generator, masing-masing denga
     *   Gambar dapat digunakan untuk keperluan komersial dengan batasan tertentu
         
 
-<hr/>
+* * *
 
 ## Midjourney
 
@@ -75,7 +75,7 @@ Tahun 2025 menghadirkan berbagai pilihan AI Image Generator, masing-masing denga
     *   Hak penggunaan tergantung pada tier langganan
         
 
-<hr/>
+* * *
 
 ## Adobe Firefly
 
@@ -98,7 +98,7 @@ Tahun 2025 menghadirkan berbagai pilihan AI Image Generator, masing-masing denga
     *   Gambar hasil Firefly memiliki lisensi komersial penuh
         
 
-<hr/>
+* * *
 
 ## Leonardo AI
 
@@ -121,7 +121,7 @@ Tahun 2025 menghadirkan berbagai pilihan AI Image Generator, masing-masing denga
     *   Lisensi tergantung pada jenis langganan dan penggunaan
         
 
-<hr/>
+* * *
 
 ## NightCafe
 
@@ -144,7 +144,7 @@ Tahun 2025 menghadirkan berbagai pilihan AI Image Generator, masing-masing denga
     *   Gambar dapat digunakan secara pribadi dan komersial dengan batasan
         
 
-<hr/>
+* * *
 
 ## Artbreeder
 
@@ -167,7 +167,7 @@ Tahun 2025 menghadirkan berbagai pilihan AI Image Generator, masing-masing denga
     *   Gambar dapat digunakan secara bebas dengan atribusi
         
 
-<hr/>
+* * *
 
 ## Dream by Wombo
 
@@ -190,7 +190,7 @@ Tahun 2025 menghadirkan berbagai pilihan AI Image Generator, masing-masing denga
     *   Gambar dapat digunakan untuk keperluan pribadi dan komersial
         
 
-<hr/>
+* * *
 
 ## Tips Memilih AI Image Generator Sesuai Kebutuhan
 
@@ -202,7 +202,7 @@ Tahun 2025 menghadirkan berbagai pilihan AI Image Generator, masing-masing denga
 | Konten sosial media | NightCafe, Canva AI |
 | Ilustrasi edukatif | DALL·E 3, Ideogram |
 
-<hr/>
+* * *
 
 ## Penutup
 
