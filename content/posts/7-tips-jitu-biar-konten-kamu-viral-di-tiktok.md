@@ -16,7 +16,7 @@ tags:
   - Tiktok
   - Viral
   - Trending
-category: Creator Hacks
+category: Creator
 publish: true
 ---
 TikTok bukan cuma soal joget dan lipsync—ini platform yang bisa mengangkat siapa saja jadi sorotan dalam semalam. Tapi di balik video viral, ada strategi yang terukur dan kreatif. Berikut adalah tips yang bisa kamu terapkan agar kontenmu punya peluang besar untuk meledak:
