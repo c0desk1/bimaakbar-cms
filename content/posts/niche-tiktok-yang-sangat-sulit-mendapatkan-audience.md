@@ -15,7 +15,7 @@ tags:
   - Tiktok
   - Niche Tiktok
   - How to viral
-category: Creator Hacks
+category: Creator
 publish: true
 ---
 TikTok telah menjadi ekosistem konten yang kompetitif. Setiap hari, jutaan video diunggah, dan algoritmanya menuntut konten yang tidak hanya kreatif tetapi juga cepat “_klik_” di mata penonton. Namun, tidak semua niche memiliki peluang yang sama. Ada niche yang sangat sulit untuk mendapatkan audience, bahkan untuk creator berpengalaman sekalipun.
