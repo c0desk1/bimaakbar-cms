@@ -16,7 +16,7 @@ tags:
   - FBPro
   - Facebook
   - Reels
-category: Creator Hacks
+category: Creator
 publish: true
 ---
 Facebook Reels bukan lagi sekadar fitur tambahan—ini adalah panggung utama untuk menjangkau jutaan pengguna aktif yang haus akan konten cepat, menarik, dan relatable. Buat kamu yang ingin tampil profesional dan tetap relevan, berikut strategi jitu agar Reels kamu punya potensi viral tinggi:
