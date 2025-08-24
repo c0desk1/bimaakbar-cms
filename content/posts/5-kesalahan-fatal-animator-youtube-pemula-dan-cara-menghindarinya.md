@@ -27,7 +27,7 @@ Membuat animasi yang bagus secara teknis hanyalah separuh dari perjuangan di You
 
 Jika channel kalian terasa mandek, mungkin kalian melakukan salah satu dari lima kesalahan fatal berikut ini. Mari kita bedah satu per satu dan pelajari cara memperbaikinya.
 
-## Kesalahan 1: Mengabaikan Kualitas Audio
+## Mengabaikan Kualitas Audio
 
 Kalian mungkin seorang dewa visual, tapi jika audio kalian terdengar seperti direkam di dalam kaleng atau di tengah pasar malam, penonton akan langsung menekan tombol _back_ dalam 10 detik pertama.
 
@@ -42,7 +42,7 @@ Kalian mungkin seorang dewa visual, tapi jika audio kalian terdengar seperti dir
     *   **Belajar Editing Audio Dasar:** Gunakan _software_ gratis seperti **Audacity**. Pelajari tiga hal dasar: _Noise Reduction_ (untuk menghilangkan desis), _Normalization_ (untuk meratakan volume), dan cara memotong bagian yang tidak perlu.
         
 
-## Kesalahan 2: Cerita yang Lemah atau Tidak Jelas
+## Cerita yang Lemah atau Tidak Jelas
 
 Animasi Kalian bisa saja sehalus buatan Pixar, tapi jika ceritanya membosankan, alurnya berantakan, atau tidak ada pesan yang jelas, penonton tidak akan peduli.
 
@@ -57,7 +57,7 @@ Animasi Kalian bisa saja sehalus buatan Pixar, tapi jika ceritanya membosankan, 
     *   **Minta Pendapat Orang Lain:** Sebelum Anda mulai proses animasi yang panjang, ceritakan ide Anda ke seorang teman. Apakah mereka mengerti? Apakah mereka tertawa di bagian yang seharusnya lucu? Umpan balik di tahap awal sangat berharga.
         
 
-## Kesalahan 3: Jadwal Unggah yang Tidak Konsisten
+## Jadwal Unggah yang Tidak Konsisten
 
 Kalian mengunggah tiga video dalam seminggu, lalu menghilang tanpa kabar selama tiga bulan. Ini adalah cara tercepat untuk membunuh momentum dan membuat algoritma YouTube melupakan channel kalian.
 
@@ -72,7 +72,7 @@ Kalian mengunggah tiga video dalam seminggu, lalu menghilang tanpa kabar selama 
     *   **Komunikasi Itu Kunci:** Jika kalian tahu akan terlambat mengunggah, beritahu audiens kalian. Gunakan Tab Komunitas YouTube atau media sosial kalian untuk memberikan kabar. Penonton akan jauh lebih menghargai.
         
 
-## Kesalahan 4: Thumbnail dan Judul yang Membosankan
+## Thumbnail dan Judul yang Membosankan
 
 Ingat: **Thumbnail dan judul adalah "pintu depan" video Kalian.** Jika pintu depan kalian terlihat kusam dan tidak menarik, tidak ada yang mau masuk, sebagus apa pun "isi rumah" kalian.
 
@@ -85,7 +85,7 @@ Ingat: **Thumbnail dan judul adalah "pintu depan" video Kalian.** Jika pintu dep
     *   **Judul:** Buat judul yang memancing rasa penasaran, tapi **jangan _clickbait_.** Gunakan kata kunci yang relevan. Bandingkan ini: "Animasi VLOG #5" dengan "Pengalaman Paling Memalukan di Sekolah (Animasi)". Mana yang lebih ingin kalian klik?
         
 
-## Kesalahan 5: Tidak Berinteraksi dengan Komunitas
+## Tidak Berinteraksi dengan Komunitas
 
 Kalian memperlakukan YouTube seperti tempat pembuangan video. Kalian mengunggah, lalu meninggalkannya begitu saja tanpa membalas komentar atau berinteraksi dengan penonton.
 
