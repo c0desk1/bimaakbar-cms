@@ -30,7 +30,7 @@ In this article, we'll discuss some of the most popular AI-based image generator
 
 * * *
 
-![Open AI DALL-E](/assets/images/openai.webp)
+![Open AI DALL-E](https://bimaakbar.bimasaktiakbarr.workers.dev/assets/images/openai.webp)
 
 ## DALL·E (OpenAI)
 
@@ -43,12 +43,12 @@ DALL·E is one of the pioneers of generative AI for images. Developed by OpenAI,
 *   Uses a credit system. There is a limited free version, with paid plans available for intensive use.
     
 
-Visit [here.](https://openai.com/index/dall-e-3/)
+Visit [here](https://openai.com/index/dall-e-3/) for more information.
 
 * * *
 
   
-![Mid Journey](/assets/images/midjourney.webp)
+![Mid Journey](https://bimaakbar.bimasaktiakbarr.workers.dev/assets/images/midjourney.webp)
 
 ## MidJourney
 
@@ -61,9 +61,11 @@ MidJourney is often the first choice for visual creators who prioritize aestheti
 *   Monthly subscription-based, no permanent free plan.
     
 
-Visit [here.](https://www.midjourney.com/)
+Visit [here](https://www.midjourney.com/) for more information.
 
 * * *
+
+![Adobe Firefly](https://bimaakbar.bimasaktiakbarr.workers.dev/assets/images/firefly.webp)
 
 ## Adobe Firefly
 
@@ -76,11 +78,11 @@ Firefly is Adobe's answer to the AI ​​trend. Firefly's imagery is safe for c
 *   Limited access is free, full access is available to Adobe CC subscribers.
     
 
-Visit [here.](https://www.adobe.com/products/firefly.html)
+Visit [here](https://www.adobe.com/products/firefly.html) for more information.
 
 * * *
 
-![Leonardo AI](/assets/images/leonardo.webp)
+![Leonardo AI](https://bimaakbar.bimasaktiakbarr.workers.dev/assets/images/leonardo.webp)
 
 ## Leonardo AI
 
@@ -93,11 +95,11 @@ Leonardo is widely recognized among game creators and digital illustrators. It's
 *   Free plan with daily credits; paid plans for full access and server priority.
     
 
-Visit [here.](https://leonardo.ai/)
+Visit [here](https://leonardo.ai/) for more information.
 
 * * *
 
-![NightCafe AI](/assets/images/nightcafe.webp)
+![NightCafe AI](https://bimaakbar.bimasaktiakbarr.workers.dev/assets/images/nightcafe.webp)
 
 ## NightCafe
 
@@ -110,11 +112,11 @@ NightCafe is a favorite among the creative community because it's easy to use an
 *   Credit-based, with a daily free mode and top-up options.
     
 
-Visit [here.](https://creator.nightcafe.studio/)
+Visit [here](https://creator.nightcafe.studio/) for more information.
 
 * * *
 
-![ArtBreeder AI](/assets/images/artbreeder.webp)
+![ArtBreeder AI](https://bimaakbar.bimasaktiakbarr.workers.dev/assets/images/artbreeder.webp)
 
 ## Artbreeder
 
@@ -127,11 +129,11 @@ Artbreeder has a unique concept: instead of just text-to-image, it allows users 
 *   Limited free, paid version for higher export quality.
     
 
-Visit [here.](https://www.artbreeder.com/)
+Visit [here](https://www.artbreeder.com/) for more information.
 
 * * *
 
-![Dream by Wombo](/assets/images/dream.webp)
+![Dream by Wombo](https://bimaakbar.bimasaktiakbarr.workers.dev/assets/images/dream.webp)
 
 ## Dream by Wombo
 
@@ -144,11 +146,11 @@ Dream by Wombo is popular among mobile users because of its convenience: simply 
 *   Free with watermark; paid Pro version unlocks high resolution & no watermark.
     
 
-Visit [here.](https://dream.ai/)
+Visit [here](https://dream.ai/) for more information.
 
 * * *
 
-![PicLumen](/assets/images/piclumen.webp)
+![PicLumen](https://bimaakbar.bimasaktiakbarr.workers.dev/assets/images/piclumen.webp)
 
 ## PicLumen
 
@@ -163,11 +165,11 @@ PicLumen is gaining popularity because it offers unlimited free generation throu
 *   Starting at $9.9/month for access to more credits, batch processing of up to 5 images, and extensive cloud storage.
     
 
-Visit [here.](https://www.piclumen.com/)
+Visit [here](https://www.piclumen.com/) for more information.
 
 * * *
 
-![Vheer AI](/assets/images/vheer.webp)
+![Vheer AI](https://bimaakbar.bimasaktiakbarr.workers.dev/assets/images/vheer.webp)
 
 ## Vheer AI
 
@@ -180,7 +182,7 @@ Vheer AI comes with a free-for-all concept: no registration required, no credit 
 *   All results are free to download without an account; premium features may be available in the future.
     
 
-Visit [here.](https://vheer.com/)
+Visit [here](https://vheer.com/) for more information.
 
 * * *
 
