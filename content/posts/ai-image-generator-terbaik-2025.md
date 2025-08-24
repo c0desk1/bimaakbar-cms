@@ -30,6 +30,8 @@ In this article, we'll discuss some of the most popular AI-based image generator
 
 * * *
 
+![Open AI DALL-E](/assets/images/openai.webp)
+
 ## DALL·E (OpenAI)
 
 DALL·E is one of the pioneers of generative AI for images. Developed by OpenAI, this tool is integrated directly into ChatGPT, making it easily accessible to millions of users.
@@ -44,6 +46,9 @@ DALL·E is one of the pioneers of generative AI for images. Developed by OpenAI,
 Visit [here.](https://openai.com/index/dall-e-3/)
 
 * * *
+
+  
+![Mid Journey](/assets/images/midjourney.webp)
 
 ## MidJourney
 
@@ -75,6 +80,8 @@ Visit [here.](https://www.adobe.com/products/firefly.html)
 
 * * *
 
+![Leonardo AI](/assets/images/leonardo.webp)
+
 ## Leonardo AI
 
 Leonardo is widely recognized among game creators and digital illustrators. It's widely used for character creation, game assets, and concept art.
@@ -89,6 +96,8 @@ Leonardo is widely recognized among game creators and digital illustrators. It's
 Visit [here.](https://leonardo.ai/)
 
 * * *
+
+![NightCafe AI](/assets/images/nightcafe.webp)
 
 ## NightCafe
 
@@ -105,6 +114,8 @@ Visit [here.](https://creator.nightcafe.studio/)
 
 * * *
 
+![ArtBreeder AI](/assets/images/artbreeder.webp)
+
 ## Artbreeder
 
 Artbreeder has a unique concept: instead of just text-to-image, it allows users to combine images into new works.
@@ -120,6 +131,8 @@ Visit [here.](https://www.artbreeder.com/)
 
 * * *
 
+![Dream by Wombo](/assets/images/dream.webp)
+
 ## Dream by Wombo
 
 Dream by Wombo is popular among mobile users because of its convenience: simply type a prompt, choose a style, and the resulting image is ready to download.
@@ -134,6 +147,8 @@ Dream by Wombo is popular among mobile users because of its convenience: simply 
 Visit [here.](https://dream.ai/)
 
 * * *
+
+![PicLumen](/assets/images/piclumen.webp)
 
 ## PicLumen
 
@@ -151,6 +166,8 @@ PicLumen is gaining popularity because it offers unlimited free generation throu
 Visit [here.](https://www.piclumen.com/)
 
 * * *
+
+![Vheer AI](/assets/images/vheer.webp)
 
 ## Vheer AI
 
